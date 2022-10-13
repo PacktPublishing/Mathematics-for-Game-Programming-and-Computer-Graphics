@@ -28,7 +28,6 @@ class Mesh3D:
             glTexCoord2fv(self.uvs[self.triangles[t + 2]])
             glVertex3fv(self.vertices[self.triangles[t + 2]])
             glEnd()
-        glDisable(GL_TEXTURE_2D)
 
     def int_texture(self):
         self.texID = glGenTextures(1)

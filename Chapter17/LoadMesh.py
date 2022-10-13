@@ -1,0 +1,55 @@
+from Mesh3D import *
+from GraphicsData import *
+from Utils import *
+
+
+class LoadMesh(Mesh3D):
+    def __init__(self, vao_ref, material, draw_type, model_filename, texture_file="", back_face_cull=False):
+        self.vertices, self.uvs, self.normals, self.normal_ind, self.triangles = self.load_drawing(model_filename)
+        self.coordinates = self.format_vertices(self.vertices, self.triangles)
+        self.draw_type = draw_type
+        self.vao_ref = vao_ref
+        position = GraphicsData("vec3", self.coordinates)
+        position.create_variable(material.program_id, "position")
+
+    def format_vertices(self, coordinates, triangles):
+        allTriangles = []
+        for t in range(0, len(triangles), 3):
+            allTriangles.append(coordinates[triangles[t]])
+            allTriangles.append(coordinates[triangles[t + 1]])
+            allTriangles.append(coordinates[triangles[t + 2]])
+        return np.array(allTriangles, np.float32)
+
+    def draw(self):
+        glBindVertexArray(self.vao_ref)
+        glDrawArrays(self.draw_type, 0, len(self.coordinates))
+
+    def load_drawing(self, filename):
+        vertices = []
+        uvs = []
+        normals = []
+        normal_ind = []
+        triangles = []
+        with open(filename) as fp:
+            line = fp.readline()
+            while line:
+                if line[:2] == "v ":
+                    vx, vy, vz = [float(value) for value in line[2:].split()]
+                    vertices.append((vx, vy, vz))
+                if line[:2] == "vn":
+                    vx, vy, vz = [float(value) for value in line[3:].split()]
+                    normals.append((vx, vy, vz))
+                if line[:2] == "vt":
+                    vx, vy = [float(value) for value in line[3:].split()]
+                    uvs.append((vx, vy))
+                if line[:2] == "f ":
+                    t1, t2, t3 = [value for value in line[2:].split()]
+                    triangles.append([int(value) for value in t1.split('/')][0] - 1)
+                    triangles.append([int(value) for value in t2.split('/')][0] - 1)
+                    triangles.append([int(value) for value in t3.split('/')][0] - 1)
+                    normal_ind.append([int(value) for value in t1.split('/')][2] - 1)
+                    normal_ind.append([int(value) for value in t2.split('/')][2] - 1)
+                    normal_ind.append([int(value) for value in t3.split('/')][2] - 1)
+                line = fp.readline()
+        return vertices, uvs, normals, normal_ind, triangles
+
