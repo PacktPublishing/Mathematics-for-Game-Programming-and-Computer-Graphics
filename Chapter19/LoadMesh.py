@@ -18,8 +18,8 @@ class LoadMesh(Mesh3D):
         position.create_variable(material.program_id, "position")
         vertex_normals = GraphicsData("vec3", self.norms)
         vertex_normals.create_variable(material.program_id, "vertex_normal")
-        v_uvs = GraphicsData("vec2", self.uv_vals)
-        v_uvs.create_variable(self.material.program_id, "vertex_uv")
+        #v_uvs = GraphicsData("vec2", self.uv_vals)
+        #v_uvs.create_variable(self.material.program_id, "vertex_uv")
         self.albedo = None
         self.metallic = None
         self.roughness = None

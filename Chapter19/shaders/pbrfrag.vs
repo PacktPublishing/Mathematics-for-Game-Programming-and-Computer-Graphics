@@ -1,6 +1,6 @@
 #version 330 core
 out vec4 frag_color;
-in vec2 UV;
+//in vec2 UV;
 in vec3 world_pos;
 in vec3 normal;
 in vec3 cam_pos;
