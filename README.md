@@ -51,6 +51,29 @@ while not done:
 pygame.quit()
 
 ```
+Throughout the book, the code assumes the external files (models, textures and shaders) are in the same folder as the code accessing them.  However, in GitHub, the external files are accessed as if one folder higher.  Please keep this in mind for referencing external files in the code.
+For example, if your project files are organized like this:
+```
+Root folder
+- Project 1
+---  Main.py
+---  Models
+------  Teapot.obj
+```
+It means that the models folder containing the teapot model is in the same folder as the main.py code.  To reference Teapot.obj from inside Main.py the address is:
+“Models/Teapot.obj”
+However, if you would like to keep the external files in one place and outside any particular chapter project you can place them on the same level as each chapter code (as is referenced in GitHub).  This structure appears as:
+```
+Root folder
+     Project 1
+------  Main.py
+---  Models
+------  Teapot.obj
+```
+In this case, the address of Teapot.obj should be:
+“../Models/Teapot.obj”
+
+The “../” in the file address tells the code to look up one folder from where the code is running from.
 
 **Following is what you need for this book:**
 This book is for programmers who want to enhance their 3D mathematics skills relating to computer graphics and computer games. Knowledge of high school–level mathematics and a working understanding in an object-orientated language is needed to grasp the contents present in this book.
