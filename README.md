@@ -1,3 +1,14 @@
+
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781801077330)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
 # Mathematics for Game Programming and Computer Graphics
 
 <a href="https://www.packtpub.com/product/mathematics-for-game-programming-and-computer-graphics/9781801077330"><img src="https://static.packt-cdn.com/products/9781801077330/cover/smaller" alt="Mathematics for Game Programming and Computer Graphics" height="256px" align="right"></a>
